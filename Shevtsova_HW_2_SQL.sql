@@ -337,7 +337,6 @@ from employee_salary
 right join employees on employee_id=employees.id
 where salary_id is null;
 
-
 --6. Вывести всех работников с названиями их должности.
 
 select employees.id, employee_name, roless.id, role_name
@@ -377,7 +376,6 @@ join employees on employee_id=employees.id
 join roless on role_id=roless.id
 where roless.role_name like '%Manual QA%';
 
-
 --11.  Вывести имена и должность автоматизаторов QA.
 
 select employee_name, role_name
@@ -402,7 +400,6 @@ join salaryy  on salary_id=salaryy.id
 join employees on employee_id=employees.id
 where employee_id in (select employee_id from roles_employee join roless on role_id=roless.id where role_name like '%Middle%');
 
-
 --14.Вывести имена и зарплаты Senior специалистов.
 
 select employee_name, monthly_salary
@@ -410,7 +407,6 @@ from employee_salary
 join salaryy  on salary_id=salaryy.id 
 join employees on employee_id=employees.id
 where employee_id in (select employee_id from roles_employee join roless on role_id=roless.id where role_name like '%Senior%');
-
 
 --15. Вывести зарплаты Java разработчиков.
 
@@ -436,7 +432,6 @@ join salaryy  on salary_id=salaryy.id
 join employees on employee_id=employees.id
 where employee_id in (select employee_id from roles_employee join roless on role_id=roless.id where role_name like '%Junior Python%');
 
-
 --18. Вывести имена и зарплаты Middle JS разработчиков.
 
 select employee_name, monthly_salary
@@ -444,7 +439,6 @@ from employee_salary
 join salaryy  on salary_id=salaryy.id 
 join employees on employee_id=employees.id
 where employee_id in (select employee_id from roles_employee join roless on role_id=roless.id where role_name like '%Middle JavaScript%');
-
 
 --19. Вывести имена и зарплаты Senior Java разработчиков.
 
@@ -461,7 +455,6 @@ from employee_salary
 join salaryy  on salary_id=salaryy.id 
 join employees on employee_id=employees.id
 where employee_id in (select employee_id from roles_employee join roless on role_id=roless.id where role_name like '%Junior%' and role_name like '%QA%');
-
 
 --21. Вывести среднюю зарплату всех Junior специалистов.
 
@@ -547,7 +540,6 @@ join roles_employee on employee_salary.employee_id=roles_employee.employee_id
 where role_id in (select roless.id from roless) and monthly_salary >= 1700 and monthly_salary <= 2300
 order by monthly_salary;
 
-
 --31. Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов у которых ЗП меньше 2300.
 
 select employee_name, (select role_name from roless where roless.id=roles_employee.role_id), monthly_salary
@@ -567,13 +559,3 @@ join employees on employee_id=employees.id
 join roles_employee on employee_salary.employee_id=roles_employee.employee_id 
 where role_id in (select roless.id from roless) and  monthly_salary in (1100, 1500, 2000)
 order by monthly_salary;
-
-
-
-
-
-
-
-
-
-
